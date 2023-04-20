@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/estilos.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+</head>
+<body>
+    <div id="contenedor">
+        <h1>Juegos Retro</h1>
+
+        <p>Nuestra lista es exigente con las calificaciones, solo te mostraremos juegos que tengan una calificacion mayor a 6 y resaltaremos las super recomendadas que tengan calificación de 8 en adelante.</p>
+
+        <ul>  
+            <li v-for="item in juegos" v-if="item.calificacion > 6">
+                <h2>{{item.nombre}}: {{item.anio}}</h2>
+                <img v-bind:src="item.portada" v-bind:alt="item.alt"/>
+				<p v-for="x in item.consola">  {{x}} </p> <!-- la x hace el foreach de item consola -->
+                <p v-bind:class="item.calificacion >= 8 ? 'green' : 'red'">Calificación: {{item.calificacion}}</p>
+            </li>
+        </ul>
+        
+
+    </div>
+    
+    <script src="./scripts/app.js"></script>
+
+
+</body>
+</html>
